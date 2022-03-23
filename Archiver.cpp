@@ -63,8 +63,6 @@ std::vector<TriePath> CalcCanonical(const Trie& trie, const std::unordered_map<i
     return canonical;
 }
 
-void WriteSymbol()
-
 void Archiver::Archive(char* file_name, std::istream& input, Writer& writer, bool not_last) {
     Reader reader(input);
 
@@ -217,11 +215,11 @@ void Archiver::Unarchive(std::istream& input) {
 }
 
 void Archiver::Parse(int argc, char** argv) {
-    if (argc <= 2) {
+    if (argc <= 1) {
         throw std::invalid_argument("Not enough arguments");
     }
-    if (std::strcmp(argv[2], "-h") == 0) {
-        if (argc > 3) {
+    if (std::strcmp(argv[1], "-h") == 0) {
+        if (argc > 2) {
             throw std::invalid_argument("Use \"archiver -h\" for help");
         }
         std::cout << "This is my archiver\n"
@@ -230,12 +228,12 @@ void Archiver::Parse(int argc, char** argv) {
                      "If you want to unarchive file archive_name, use \"archiver -d archive_name\"\n";
         return;
     }
-    if (std::strcmp(argv[2], "-d") == 0) {
-        if (argc != 4) {
+    if (std::strcmp(argv[1], "-d") == 0) {
+        if (argc != 3) {
             throw std::invalid_argument("Wrong number of arguments");
         }
         std::ifstream input;
-        input.open(argv[3]);
+        input.open(argv[2]);
         if (!input.is_open()) {
             throw std::runtime_error("Couldn't open the archive file");
         }
@@ -243,25 +241,25 @@ void Archiver::Parse(int argc, char** argv) {
         input.close();
         return;
     }
-    if (std::strcmp(argv[2], "-c") == 0) {
-        if (argc < 5) {
+    if (std::strcmp(argv[1], "-c") == 0) {
+        if (argc < 4) {
             throw std::invalid_argument("Not enough arguments");
         }
 
         std::ofstream output;
-        output.open(argv[3], std::ofstream::out | std::ofstream::trunc);
+        output.open(argv[2], std::ofstream::out | std::ofstream::trunc);
         if (!output.is_open()) {
             throw std::runtime_error("Couldn't open the archive file");
         }
         output.close();
-        output.open(argv[3], std::ios::app);
+        output.open(argv[2], std::ios::app);
         if (!output.is_open()) {
             throw std::runtime_error("Couldn't open the archive file");
         }
 
         Writer writer(output);
 
-        for (size_t i = 4; i < argc; ++i) {
+        for (size_t i = 3; i < argc; ++i) {
             std::ifstream input;
             input.open(argv[i]);
             if (!input.is_open()) {
