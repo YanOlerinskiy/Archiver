@@ -1,5 +1,5 @@
 # Archiver
-This is my archiver implementation. It uses canonical Huffman coding to encode a file. This was written as a college project.
+This is my archiver implementation. It uses canonical Huffman coding to encode a file. This was written as a university project.
 
 # Functionality
 You can use this to archive and unarchive files. The following is the output for `archiver -h`:  
