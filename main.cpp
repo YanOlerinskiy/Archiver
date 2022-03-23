@@ -2,5 +2,9 @@
 
 int main(int argc, char* argv[]) {
     Archiver archiver;
-    archiver.Parse(argc, argv);
+    try {
+        archiver.Parse(argc, argv);
+    } catch(...) {
+        std::cout << "Error" << std::endl;
+    }
 }
