@@ -222,10 +222,14 @@ void Archiver::Parse(int argc, char** argv) {
         if (argc > 2) {
             throw std::invalid_argument("Use \"archiver -h\" for help");
         }
-        std::cout << "This is my archiver\n"
-                     "If you want to archive files file1, file2 and so on into an archive called archive_name, use\n"
-                     "\"archiver -c archive_name file1 [file2 ...]\n"
-                     "If you want to unarchive file archive_name, use \"archiver -d archive_name\"\n";
+        std::cout << "USAGE\n"
+                     "  archiver -c archive_name file1 [file2 ...]\n"
+                     "  archiver -d archive_name\n"
+                     "  archiver -h\n"
+                     "DESCRIPTION\n"
+                     "  use -c to compress files file1, file2, ... into an archive called archive_name\n"
+                     "  use -d to decompress file archive_name back into original files\n"
+                     "  use -h for help\n";
         return;
     }
     if (std::strcmp(argv[1], "-d") == 0) {
