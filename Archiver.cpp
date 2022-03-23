@@ -220,7 +220,7 @@ void Archiver::Parse(int argc, char** argv) {
     }
     if (std::strcmp(argv[1], "-h") == 0) {
         if (argc > 2) {
-            throw std::invalid_argument("Use \"archiver -h\" for help");
+            throw std::invalid_argument("Too many arguments. Use \"archiver -h\" for help");
         }
         std::cout << "USAGE\n"
                      "  archiver -c archive_name file1 [file2 ...]\n"
