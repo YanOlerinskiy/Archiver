@@ -3,7 +3,7 @@ This is my file archiver implementation. It uses canonical Huffman coding.
 This was written as a project for my university.
 
 # Functionality
-You can use this to archive and unarchive files. The following is the output for `archiver -h`:  
+You can use this to archive and unarchive files. It works correctly even if the size of the file exceeds RAM capacity. The following is the output for `archiver -h`:  
 USAGE  
 &nbsp;&nbsp;&nbsp;&nbsp;archiver -c archive_name file1 [file2 ...]  
 &nbsp;&nbsp;&nbsp;&nbsp;archiver -d archive_name  
